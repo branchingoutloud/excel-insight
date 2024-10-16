@@ -3,10 +3,10 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import Video from "next-video";
-import getStarted from "@/public/videos/get-started.mp4";
+// import Video from "next-video";
+// import getStarted from "@/public/videos/get-started.mp4";
 import Image from "next/image";
-import { SendSvg } from "@/public";
+import { Flowchart, SendSvg } from "@/public";
 
 export default function Hero() {
   const [email, setEmail] = useState("");
@@ -61,14 +61,24 @@ export default function Hero() {
           </div>
         </form>
 
-        <div className="w-full rounded-2xl border-8 border-purple-900 shadow-[0px_20px_50px_#718096]">
+        {/* <div className="relative w-full flex justify-center items-center p-7 rounded-2xl border-8 border-purple-900 shadow-[0px_20px_50px_#718096] h-96">
           <Video
             src={getStarted}
             autoPlay
             controls={false}
             className="h-full w-full rounded-2xl"
           />
-        </div>
+          
+        </div> */}
+      </div>
+      <div className="w-full pt-12">
+        <Image
+          src={Flowchart}
+          alt="flowchart"
+          className="object-cover mx-auto rounded-2xl"
+          height={400}
+          width={800}
+        />
       </div>
     </section>
   );

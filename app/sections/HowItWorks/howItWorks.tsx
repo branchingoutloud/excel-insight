@@ -75,7 +75,7 @@ const HowItWorks = () => {
               How it works
             </CardTitle>
           </CardHeader>
-          <CardContent className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <CardContent className="grid gap-4 grid-cols-6">
             {steps.map((step, index) => {
               return (
                 <div
