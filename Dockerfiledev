@@ -7,6 +7,9 @@ WORKDIR /app
 # Install global npm dependencies (optional)
 RUN npm install -g npm@10.6.0
 
+# Copy the Prisma schema first
+COPY prisma ./prisma
+
 # Copy the package.json and package-lock.json for dependency installation
 COPY package*.json ./
 
@@ -15,6 +18,7 @@ RUN npm install --legacy-peer-deps
 
 # Install Prisma Client (if it's part of your package.json)
 RUN npx prisma generate
+RUN npx prisma db push
 
 # Copy the rest of the application code
 COPY . .
@@ -24,9 +28,6 @@ EXPOSE 3000
 
 # Set environment variables for development mode
 ENV NODE_ENV=development
-
-# Ensure the Prisma schema is up-to-date
-RUN npx prisma db push
 
 # Start the development server with hot-reloading
 CMD ["npm", "run", "dev"]
