@@ -1,0 +1,32 @@
+# Development image based on Node.js 20-alpine
+FROM node:20.10.0-alpine AS development
+
+# Set the working directory
+WORKDIR /app
+
+# Install global npm dependencies (optional)
+RUN npm install -g npm@10.6.0
+
+# Copy the package.json and package-lock.json for dependency installation
+COPY package*.json ./
+
+# Install all dependencies (no frozen lockfile, for flexibility in development)
+RUN npm install --legacy-peer-deps
+
+# Install Prisma Client (if it's part of your package.json)
+RUN npx prisma generate
+
+# Copy the rest of the application code
+COPY . .
+
+# Expose the port (Next.js default)
+EXPOSE 3000
+
+# Set environment variables for development mode
+ENV NODE_ENV=development
+
+# Ensure the Prisma schema is up-to-date
+RUN npx prisma db push
+
+# Start the development server with hot-reloading
+CMD ["npm", "run", "dev"]
