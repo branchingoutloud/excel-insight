@@ -3,18 +3,17 @@ services:
     container_name: excelinsightFe
     build:
       context: .
-      dockerfile: Dockerfiledev # Ensure you name your development Dockerfile as 'Dockerfile.dev'
+      dockerfile: Dockerfiledev  # Ensure you name your development Dockerfile as 'Dockerfile.dev'
     ports:
       - "3000:3000"
     volumes:
-      - .:/app # Mounts the current directory to the container for live code changes
-      - /app/node_modules # Ensures node_modules from the container are isolated
+      - .:/app  # Mounts the current directory to the container for live code changes
+      - /app/node_modules  # Ensures node_modules from the container are isolated
     restart: always
     networks:
       - app-network
-      environment:
-        DATABASE_URL: "postgres://avnadmin:AVNS_mEOTBDxiWhkGDGhvHdX@pg-b14cbd4-sonawanepranav19-1ee2.a.aivencloud.com:19915/excelinsightwaitlist"  # Add your actual database connection string here
-
+    environment:  # Correctly indented
+      DATABASE_URL: "postgres://avnadmin:AVNS_mEOTBDxiWhkGDGhvHdX@pg-b14cbd4-sonawanepranav19-1ee2.a.aivencloud.com:19915/excelinsightwaitlist"  # Add your actual database connection string here
 
 networks:
   app-network:
