@@ -8,7 +8,7 @@ WORKDIR /app
 RUN npm install -g npm@10.6.0
 
 # Copy the Prisma schema first
-COPY prisma ./prisma/
+COPY . .
 
 # Copy the package.json and package-lock.json for dependency installation
 COPY package*.json ./
@@ -19,9 +19,6 @@ RUN npm install --legacy-peer-deps
 # Install Prisma Client (if it's part of your package.json)
 RUN npx prisma generate
 RUN npx prisma db push
-
-# Copy the rest of the application code
-COPY . .
 
 # Expose the port (Next.js default)
 EXPOSE 3000
