@@ -13,7 +13,7 @@ services:
     networks:
       - app-network
     environment:  # Correctly indented
-      DATABASE_URL: "postgres://avnadmin:AVNS_mEOTBDxiWhkGDGhvHdX@pg-b14cbd4-sonawanepranav19-1ee2.a.aivencloud.com:19915/excelinsightwaitlist"  # Add your actual database connection string here
+      - DATABASE_URL: "postgres://avnadmin:AVNS_mEOTBDxiWhkGDGhvHdX@pg-b14cbd4-sonawanepranav19-1ee2.a.aivencloud.com:19915/excelinsightwaitlist"  # Add your actual database connection string here
 
 networks:
   app-network:
