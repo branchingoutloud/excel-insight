@@ -8,7 +8,7 @@ WORKDIR /app
 RUN npm install -g npm@10.6.0
 
 # Copy the Prisma schema first
-COPY prisma ./prisma
+COPY prisma ./prisma/
 
 # Copy the package.json and package-lock.json for dependency installation
 COPY package*.json ./
